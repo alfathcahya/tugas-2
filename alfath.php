@@ -1,0 +1,30 @@
+<?php 
+$json_string = file_get_contents("http://api.wunderground.com/api/e049ebef6ebebf6e/astronomy/amalnac/geolookup/conditions/q/ID/Mugassari.json"); 
+$parsed_json = json_decode($json_string); 
+$location = $parsed_json->{'location'}->{'city'}; 
+$weather = $parsed_json->{'current_observation'}->{'weather'};
+$feelslike_c= $parsed_json->{'current_observation'}->{'feelslike_c'};
+$wind_degrees= $parsed_json->{'current_observation'}->{'wind_degrees'};
+$windchill_c= $parsed_json->{'current_observation'}->{'windchill_c'};
+$dewpoint_c= $parsed_json->{'current_observation'}->{'dewpoint_c'};
+$visibility_km= $parsed_json->{'current_observation'}->{'visibility_km'};
+$UV= $parsed_json->{'current_observation'}->{'UV'};
+$ageOfMoon= $parsed_json->{'moon_phase'}->{'ageOfMoon'};
+echo "Saat Anda ini sedang berada di	: ${location}\n";
+echo "<br>";
+echo "Cuaca saat ini					: ${weather}\n";
+echo "<br>";
+echo "Kecepatan angin saat ini			: ${wind_degrees} \n";
+echo "<br>";
+echo "Suhu saat ini						: ${feelslike_c} celcius \n";
+echo "<br>";
+echo "Angin Dingin saat ini				: ${windchill_c} celcius \n";
+echo "<br>";
+echo "Titik embun saat ini				: ${dewpoint_c}celcius\n";
+echo "<br>";
+echo "Jarak Pandang saat ini			: ${visibility_km}kilometers\n";
+echo "<br>";
+echo "Ultra Violet saat ini				: ${UV}\n";
+echo "<br>";
+echo "Umur Bulan saat ini				: ${ageOfMoon}\n";
+?>
